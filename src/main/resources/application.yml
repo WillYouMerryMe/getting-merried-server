@@ -3,7 +3,7 @@ spring:
     import: env.yaml
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB.URL:localhost}:3306/${DB.NAME:merried}
+    url: jdbc:mysql://${DB.URL:localhost}:3306/${DB.NAME:married}
     username: ${DB.USERNAME:root}
     password: ${DB.PASSWORD}
 

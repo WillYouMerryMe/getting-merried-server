@@ -1,1 +1,1 @@
-rootProject.name = "merried"
+rootProject.name = "married"

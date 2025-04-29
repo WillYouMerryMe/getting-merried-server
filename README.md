@@ -1,1 +1,1 @@
-# getting-merried-server
+# getting-married-server
