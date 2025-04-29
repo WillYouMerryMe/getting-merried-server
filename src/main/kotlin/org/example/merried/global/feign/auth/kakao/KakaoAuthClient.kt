@@ -10,7 +10,7 @@ interface KakaoAuthClient {
     @GetMapping("/oauth/token?grant_type=authorization_code")
     fun getAccessToken(
         @RequestParam("client_id") clientId: String,
-        @RequestParam("redirect_uri") uri: String,
+        @RequestParam("redirect_uri") redirectUri: String,
         @RequestParam("code") code: String,
     ): KakaoAuthResponse
 }
