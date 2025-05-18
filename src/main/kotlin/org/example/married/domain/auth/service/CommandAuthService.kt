@@ -3,6 +3,7 @@ package org.example.married.domain.auth.service
 import org.example.married.domain.auth.domain.repository.RefreshTokenRepository
 import org.example.married.domain.auth.facade.AuthFacade
 import org.example.married.domain.auth.presentation.dto.request.CodeRequest
+import org.example.married.domain.auth.presentation.dto.request.LogoutRefreshTokenRequest
 import org.example.married.domain.auth.presentation.dto.request.ReissueRefreshTokenRequest
 import org.example.married.domain.auth.presentation.dto.response.TokenResponse
 import org.example.married.domain.user.domain.User
@@ -48,9 +49,9 @@ class CommandAuthService(
         return jwtTokenProvider.createRefreshToken(email)
     }
 
-    fun logout(token: String) {
-        val refreshToken = refreshTokenRepository.findByIdOrNull(token)
-            ?: throw InvalidJwtTokenException(token)
+    fun logout(request: LogoutRefreshTokenRequest) {
+        val refreshToken = refreshTokenRepository.findByIdOrNull(request.token)
+            ?: throw InvalidJwtTokenException(request.token)
 
         refreshTokenRepository.delete(refreshToken)
     }
