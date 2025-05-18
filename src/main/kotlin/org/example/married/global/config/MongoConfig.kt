@@ -1,9 +1,9 @@
 package org.example.married.global.config
 
 import org.springframework.context.annotation.Configuration
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing
+import org.springframework.data.mongodb.config.EnableMongoAuditing
 
-@EnableJpaAuditing
 @Configuration
-class AuditingConfig {
+@EnableMongoAuditing
+class MongoConfig {
 }

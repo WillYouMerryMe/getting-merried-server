@@ -1,34 +1,19 @@
 spring:
   config:
     import: env.yaml
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${DB.URL:localhost}:3306/${DB.NAME:married}
-    username: ${DB.USERNAME:root}
-    password: ${DB.PASSWORD}
-
-  jpa:
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQLDialect
-    generate-ddl: true
-    hibernate:
-      ddl-auto: ${DB.DDL:update}
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-    open-in-view: false
+  data:
+    mongodb:
+      uri: ${MONGO.URL:mongodb://localhost:27017/married}
+      auto-index-creation: true
+    redis:
+      host: ${REDIS.HOST:localhost}
+      port: ${REDIS.PORT:6379}
+      password: ${REDIS.PASSWORD}
 
   servlet:
     multipart:
       max-file-size: 5MB
       max-request-size: 10MB
-
-  data:
-    redis:
-      host: ${REDIS.HOST:localhost}
-      port: ${REDIS.PORT:6379}
-      password: ${REDIS.PASSWORD}
 
 jwt:
   access-time: 3600000 # 1시간
