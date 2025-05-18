@@ -46,6 +46,9 @@ dependencies {
     // open feign
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
 
+    // swagger
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4")
+
     // jwt
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
