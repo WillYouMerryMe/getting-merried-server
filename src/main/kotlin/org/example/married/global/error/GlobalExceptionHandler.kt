@@ -114,7 +114,7 @@ class GlobalExceptionHandler {
     )
     fun handleMethodArgumentNotValidException(
         request: HttpServletRequest,
-        exception: MethodArgumentNotValidException,
+        exception: BindException,
     ): ResponseEntity<ErrorResponse> {
         val details = exception.fieldErrors.map {
             mapOf(

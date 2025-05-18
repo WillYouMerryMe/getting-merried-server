@@ -74,9 +74,9 @@ class JwtTokenProvider(
                 .setSigningKey(secretKey).build()
                 .parseClaimsJws(token)
         } catch (e: ExpiredJwtException) {
-            throw ExpiredJwtTokenException(token)
+            throw ExpiredJwtTokenException("token: $token")
         } catch (e: Exception) {
-            throw InvalidJwtTokenException(token)
+            throw InvalidJwtTokenException("token: $token")
         }
     }
 

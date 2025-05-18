@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus
 import java.time.LocalDateTime
 
 data class ErrorResponse(
+    val code: Int,
     val status: HttpStatus,
     val message: String,
     val detail: Any? = null,
@@ -23,6 +24,7 @@ data class ErrorResponse(
             exception: BusinessException,
         ): ErrorResponse {
             return ErrorResponse(
+                code = exception.errorCode.status.value(),
                 status = exception.errorCode.status,
                 message = exception.errorCode.message,
                 detail = exception.detail,
@@ -37,6 +39,7 @@ data class ErrorResponse(
             detail: Any? = null,
         ): ErrorResponse {
             return ErrorResponse(
+                code = errorCode.status.value(),
                 status = errorCode.status,
                 message = errorCode.message,
                 detail = detail,

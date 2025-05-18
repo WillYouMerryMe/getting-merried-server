@@ -1,6 +1,7 @@
 package org.example.married.global.security
 
-import org.apache.catalina.webresources.TomcatURLStreamHandlerFactory.disable
+import com.fasterxml.jackson.databind.ObjectMapper
+import org.example.married.global.security.jwt.JwtTokenFilter
 import org.example.married.global.security.jwt.JwtTokenProvider
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -9,19 +10,21 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
     private val jwtTokenProvider: JwtTokenProvider,
+    private val objectMapper: ObjectMapper,
 ) {
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
-            .csrf { disable() }
-            .httpBasic { disable() }
-            .formLogin { disable() }
-            .logout { disable() }
+            .csrf { it.disable() }
+            .httpBasic { it.disable() }
+            .formLogin { it.disable() }
+            .logout { it.disable() }
 
         http
             .sessionManagement { session ->
@@ -30,11 +33,11 @@ class SecurityConfig(
         http
             .cors(Customizer.withDefaults())
             .authorizeHttpRequests{ auth -> auth
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
             }
 
         http
-            .with(FilterConfig(jwtTokenProvider), FilterConfig::build)
+            .addFilterBefore(JwtTokenFilter(jwtTokenProvider, objectMapper), UsernamePasswordAuthenticationFilter::class.java)
 
         return http.build()
     }
