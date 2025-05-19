@@ -1,5 +1,6 @@
 package org.example.married.domain.card.domain
 
+import org.example.married.domain.card.domain.type.CardComponentOrder
 import org.example.married.global.entity.BaseEntity
 import org.springframework.data.mongodb.core.mapping.Document
 
@@ -20,5 +21,6 @@ data class Card(
     val guestBook: GuestBook? = null,
     val guestSnapshots: GuestSnapshots? = null,
     val shareUrlStyle: ShareUrlStyle? = null,
+    val componentOrders: List<CardComponentOrder>,
     val userId: Long,
 ): BaseEntity()
