@@ -1,4 +1,4 @@
-package org.example.married.domain.card.domain.type
+package org.example.married.domain.card.domain.component
 
 enum class ComponentType {
     INVITATION_MESSAGE,

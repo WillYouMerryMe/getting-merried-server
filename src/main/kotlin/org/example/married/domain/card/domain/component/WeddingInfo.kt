@@ -1,4 +1,4 @@
-package org.example.married.domain.card.domain
+package org.example.married.domain.card.domain.component
 
 import java.time.LocalDateTime
 

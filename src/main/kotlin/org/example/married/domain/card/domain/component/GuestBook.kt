@@ -1,4 +1,4 @@
-package org.example.married.domain.card.domain
+package org.example.married.domain.card.domain.component
 
 data class GuestBook(
     val title: String? = null,
