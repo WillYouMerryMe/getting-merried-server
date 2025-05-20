@@ -28,15 +28,17 @@ class CommandAuthControllerImpl(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     override fun reissueRefreshToken(
         @RequestBody request: ReissueRefreshTokenRequest,
-    ) {
+    ): ResponseEntity<Void> {
         commandAuthService.reissueRefreshToken(request)
+        return ResponseEntity.noContent().build()
     }
 
     @PostMapping("/logout")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     override fun logout(
         @RequestBody request: LogoutRefreshTokenRequest,
-    ) {
+    ): ResponseEntity<Void> {
         commandAuthService.logout(request)
+        return ResponseEntity.noContent().build()
     }
 }
