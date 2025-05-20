@@ -7,3 +7,17 @@ data class WeddingInfo(
     val weddingHallName: String,
     val isCalendarVisible: Boolean,
 )
+
+data class WeddingInfoDto(
+    val date: LocalDateTime,
+    val weddingHallName: String,
+    val isCalendarVisible: Boolean,
+) {
+    fun toWeddingInfo(): WeddingInfo {
+        return WeddingInfo(
+            date = date,
+            weddingHallName = weddingHallName,
+            isCalendarVisible = isCalendarVisible,
+        )
+    }
+}
