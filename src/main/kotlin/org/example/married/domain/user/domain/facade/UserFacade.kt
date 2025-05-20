@@ -1,17 +1,23 @@
 package org.example.married.domain.user.domain.facade
 
 import org.example.married.domain.user.domain.User
-import org.example.married.domain.user.domain.repository.UserRepository
-import org.example.married.domain.user.domain.repository.findByEmailOrThrow
+import org.example.married.domain.user.exception.UserNotFoundException
 import org.example.married.global.annotation.Facade
+import org.example.married.global.security.auth.AuthDetails
 import org.springframework.security.core.context.SecurityContextHolder
 
 @Facade
-class UserFacade(
-    private val userRepository: UserRepository,
-) {
-    fun getCurrentUser(): User {
-        val email: String = SecurityContextHolder.getContext().authentication.name
-        return userRepository.findByEmailOrThrow(email)
+class UserFacade {
+
+    companion object {
+        fun getCurrentUser(): User {
+            val principal = SecurityContextHolder.getContext().authentication.principal
+
+            if (principal is AuthDetails) {
+                return principal.user
+            }
+
+            throw UserNotFoundException()
+        }
     }
 }
