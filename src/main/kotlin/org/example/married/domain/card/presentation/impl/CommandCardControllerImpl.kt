@@ -6,6 +6,7 @@ import org.example.married.domain.card.service.CommandCardService
 import org.example.married.domain.user.domain.facade.UserFacade
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -17,7 +18,7 @@ class CommandCardControllerImpl(
 
     @PostMapping
     override fun createCard(
-        request: CreateCardRequest,
+        @RequestBody request: CreateCardRequest,
     ): ResponseEntity<Long> {
         val result = commandCardService.createCard(request, UserFacade.getCurrentUser())
         return ResponseEntity.ok(result)

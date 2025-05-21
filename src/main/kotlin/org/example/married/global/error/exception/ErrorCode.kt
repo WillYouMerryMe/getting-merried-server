@@ -9,6 +9,9 @@ enum class ErrorCode(
     // user
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "유저를 찾지 못 하였습니다."),
 
+    // card
+    CARD_NOT_FOUND(HttpStatus.NOT_FOUND, "카드를 찾지 못 하였습니다."),
+
     // jwt
     EXPIRED_JWT(HttpStatus.UNAUTHORIZED, "만료된 토큰입니다."),
     INVALID_JWT(HttpStatus.UNAUTHORIZED, "유효하지 않은 토큰입니다."),

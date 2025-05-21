@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface CardRepository: MongoRepository<Card, Long> {
+    fun findByIdAndUserId(
+        cardId: Long,
+        userId: Long
+    ): Card?
 }
