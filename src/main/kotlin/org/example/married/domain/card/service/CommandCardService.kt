@@ -13,7 +13,7 @@ class CommandCardService(
     fun createCard(
         request: CreateCardRequest,
         user: User,
-    ): Long {
+    ): String {
         val card = Card(
             request.title,
             request.invitationSetting.toInvitationSetting(),

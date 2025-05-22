@@ -19,7 +19,7 @@ class CommandCardControllerImpl(
     @PostMapping
     override fun createCard(
         @RequestBody request: CreateCardRequest,
-    ): ResponseEntity<Long> {
+    ): ResponseEntity<String> {
         val result = commandCardService.createCard(request, UserFacade.getCurrentUser())
         return ResponseEntity.ok(result)
     }

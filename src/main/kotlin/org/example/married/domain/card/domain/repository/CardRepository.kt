@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository
 interface CardRepository: MongoRepository<Card, Long> {
     fun findByIdAndUserId(
         cardId: Long,
-        userId: Long
+        userId: String,
     ): Card?
 }

@@ -1,5 +1,6 @@
 package org.example.married.global.entity
 
+import org.example.married.global.util.generateDocumentId
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
@@ -8,7 +9,7 @@ import java.time.LocalDateTime
 
 abstract class BaseEntity {
     @Id
-    val id: Long = 0L
+    val id: String = generateDocumentId()
 
     @CreatedDate
     @Field("created_at")

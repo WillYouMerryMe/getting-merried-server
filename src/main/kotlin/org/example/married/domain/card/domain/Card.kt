@@ -22,5 +22,5 @@ data class Card(
     val guestSnapshots: GuestSnapshots? = null,
     val shareUrlStyle: ShareUrlStyle? = null,
     val componentOrders: List<CardComponentOrder>,
-    val userId: Long,
+    val userId: String,
 ): BaseEntity()

@@ -14,5 +14,5 @@ interface CommandCardController {
     )
     fun createCard(
         request: CreateCardRequest,
-    ): ResponseEntity<Long>
+    ): ResponseEntity<String>
 }
