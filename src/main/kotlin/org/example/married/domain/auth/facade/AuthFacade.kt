@@ -28,7 +28,7 @@ class AuthFacade(
                     authProperties.naver.state,
                 ).access_token
 
-                val result = naverUserClient.getUserProfile(accessToken)
+                val result = naverUserClient.getUserProfile("Bearer $accessToken")
 
                 return result.getAuthProfile()
             }
@@ -40,7 +40,7 @@ class AuthFacade(
                     code,
                 ).access_token
 
-                val result = kakaoUserClient.getUserProfile(accessToken)
+                val result = kakaoUserClient.getUserProfile("Bearer $accessToken")
 
                 return result.getAuthProfile()
             }
