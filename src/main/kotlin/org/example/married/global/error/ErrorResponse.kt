@@ -58,7 +58,8 @@ data class ErrorResponse(
         }
     }
 
-    fun errorLogging() {
+    fun errorLogging(ex: Exception? = null) {
         log.error(">> Path=$path, ErrorCode=$status, Message=$message, Detail=$detail, ClientIP=$ip")
+        log.error(">> exception message : $ex")
     }
 }

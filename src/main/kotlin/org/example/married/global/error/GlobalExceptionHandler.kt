@@ -218,7 +218,7 @@ class GlobalExceptionHandler {
     ): ResponseEntity<ErrorResponse> {
         val errorCode = ErrorCode.UNEXPECTED_SERVER_ERROR
         val response = ErrorResponse.of(request = request, errorCode = errorCode)
-        response.errorLogging()
+        response.errorLogging(exception)
         return makeResponse(response)
     }
 
