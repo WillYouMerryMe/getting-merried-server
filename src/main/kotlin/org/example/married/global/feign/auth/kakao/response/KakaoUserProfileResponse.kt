@@ -7,10 +7,10 @@ data class KakaoUserProfileResponse(
 ) {
     data class KakaoAccount(
         val profile: KakaoProfile,
+        val email: String,
     )
 
     data class KakaoProfile(
-        val email: String,
         val nickname: String,
         val profile_image_url: String,
     )
@@ -19,7 +19,7 @@ data class KakaoUserProfileResponse(
         val profile = kakao_account.profile
 
         return AuthProfile(
-            profile.email,
+            kakao_account.email,
             profile.nickname,
             profile.profile_image_url,
         )

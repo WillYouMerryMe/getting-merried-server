@@ -7,14 +7,14 @@ data class NaverUserProfileResponse(
 ) {
     data class NaverProfile(
         val email: String,
-        val nickname: String,
+        val name: String,
         val profile_image: String,
     )
 
     fun getAuthProfile(): AuthProfile {
         return AuthProfile(
             response.email,
-            response.nickname,
+            response.name,
             response.profile_image,
         )
     }
