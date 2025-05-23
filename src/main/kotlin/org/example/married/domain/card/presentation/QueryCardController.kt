@@ -13,6 +13,6 @@ interface QueryCardController {
         description = "카드의 id를 보내 자신의 카드를 조회할 수 있습니다.",
     )
     fun getById(
-        id: Long,
+        id: String,
     ): ResponseEntity<GetCardResponse>
 }

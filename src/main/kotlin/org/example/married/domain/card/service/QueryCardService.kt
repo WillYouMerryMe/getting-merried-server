@@ -11,7 +11,7 @@ class QueryCardService(
     private val cardRepository: CardRepository,
 ) {
     fun getCardById(
-        cardId: Long,
+        cardId: String,
         user: User,
     ): GetCardResponse {
         val card = cardRepository.findByIdAndUserId(cardId, user.id)
