@@ -15,4 +15,12 @@ interface CommandCardController {
     fun createCard(
         request: CreateCardRequest,
     ): ResponseEntity<String>
+
+    @Operation(
+        summary = "카드 삭제 API 입니다.",
+        description = "카드 id를 가지고 자신의 카드를 삭제할 수 있습니다.",
+    )
+    fun deleteCard(
+        id: String,
+    ): ResponseEntity<Void>
 }

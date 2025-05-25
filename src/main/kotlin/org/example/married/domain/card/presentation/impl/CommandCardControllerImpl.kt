@@ -5,10 +5,7 @@ import org.example.married.domain.card.presentation.dto.request.CreateCardReques
 import org.example.married.domain.card.service.CommandCardService
 import org.example.married.domain.user.domain.facade.UserFacade
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RequestMapping("/cards")
 @RestController
@@ -22,5 +19,13 @@ class CommandCardControllerImpl(
     ): ResponseEntity<String> {
         val result = commandCardService.createCard(request, UserFacade.getCurrentUser())
         return ResponseEntity.ok(result)
+    }
+
+    @DeleteMapping("/{id}")
+    override fun deleteCard(
+        @PathVariable id: String
+    ): ResponseEntity<Void> {
+        commandCardService.deleteCard(id, UserFacade.getCurrentUser())
+        return ResponseEntity.noContent().build()
     }
 }

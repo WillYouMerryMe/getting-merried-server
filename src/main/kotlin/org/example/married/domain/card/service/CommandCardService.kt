@@ -2,6 +2,7 @@ package org.example.married.domain.card.service
 
 import org.example.married.domain.card.domain.Card
 import org.example.married.domain.card.domain.repository.CardRepository
+import org.example.married.domain.card.exception.CardNotFoundException
 import org.example.married.domain.card.presentation.dto.request.CreateCardRequest
 import org.example.married.domain.user.domain.User
 import org.example.married.global.annotation.CustomService
@@ -35,5 +36,14 @@ class CommandCardService(
         )
 
         return cardRepository.save(card).id
+    }
+
+    fun deleteCard(
+        id: String,
+        user: User,
+    ) {
+        val card = cardRepository.findByIdAndUserId(id, user.id)
+            ?: throw CardNotFoundException()
+        cardRepository.delete(card)
     }
 }
