@@ -43,7 +43,7 @@ class CommandAuthControllerImpl(
         return ResponseEntity.noContent().build()
     }
 
-    @PostMapping("/logout")
+    @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     override fun deleteUser(
     ): ResponseEntity<Void> {
