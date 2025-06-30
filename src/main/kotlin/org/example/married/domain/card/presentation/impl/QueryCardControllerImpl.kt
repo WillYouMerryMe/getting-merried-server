@@ -1,6 +1,7 @@
 package org.example.married.domain.card.presentation.impl
 
 import org.example.married.domain.card.presentation.QueryCardController
+import org.example.married.domain.card.presentation.dto.response.GetCardsResponse
 import org.example.married.domain.card.presentation.dto.response.GetCardResponse
 import org.example.married.domain.card.service.QueryCardService
 import org.example.married.domain.user.domain.facade.UserFacade
@@ -21,6 +22,14 @@ class QueryCardControllerImpl(
         @PathVariable id: String,
     ): ResponseEntity<GetCardResponse> {
         val result = queryCardService.getCardById(id, UserFacade.getCurrentUser())
+        return ResponseEntity.ok(result)
+    }
+
+    @GetMapping("/list")
+    override fun getCards(
+
+    ): ResponseEntity<List<GetCardsResponse>> {
+        val result = queryCardService.getCards(UserFacade.getCurrentUser())
         return ResponseEntity.ok(result)
     }
 }

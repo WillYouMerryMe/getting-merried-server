@@ -2,6 +2,7 @@ package org.example.married.domain.card.presentation
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
+import org.example.married.domain.card.presentation.dto.response.GetCardsResponse
 import org.example.married.domain.card.presentation.dto.response.GetCardResponse
 import org.springframework.http.ResponseEntity
 
@@ -15,4 +16,11 @@ interface QueryCardController {
     fun getById(
         id: String,
     ): ResponseEntity<GetCardResponse>
+
+    @Operation(
+        summary = "카드 리스트 조회 API 입니다.",
+        description = "자신의 카드 리스트를 조회할 수 있습니다.",
+    )
+    fun getCards(
+    ): ResponseEntity<List<GetCardsResponse>>
 }

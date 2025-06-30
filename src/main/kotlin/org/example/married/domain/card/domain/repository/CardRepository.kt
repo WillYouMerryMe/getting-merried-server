@@ -10,4 +10,6 @@ interface CardRepository: MongoRepository<Card, String> {
         cardId: String,
         userId: String,
     ): Card?
+
+    fun findByUserId(userId: String): List<Card>
 }
