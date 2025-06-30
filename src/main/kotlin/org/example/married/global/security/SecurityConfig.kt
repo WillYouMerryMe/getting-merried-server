@@ -34,7 +34,10 @@ class SecurityConfig(
             .cors(Customizer.withDefaults())
             .authorizeHttpRequests{ auth -> auth
                 .requestMatchers("/auth/**").permitAll()
-                .requestMatchers("/swagger-ui/**").permitAll()
+                .requestMatchers(
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**",
+                    "/v3/api-docs/swagger-config").permitAll()
                 .anyRequest().authenticated()
             }
 
