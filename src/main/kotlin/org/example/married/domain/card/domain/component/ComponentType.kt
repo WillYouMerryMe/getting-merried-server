@@ -1,5 +1,7 @@
 package org.example.married.domain.card.domain.component
 
+import com.fasterxml.jackson.annotation.JsonValue
+
 enum class ComponentType {
     INVITATION_MESSAGE,
     GROOM_PROFILE,
@@ -12,7 +14,12 @@ enum class ComponentType {
     GUEST_NOTICE,
     GUEST_BOOK,
     GUEST_SNAPSHOTS,
-    SHARE_URL_STYLE,
+    SHARE_URL_STYLE;
+
+    @JsonValue
+    fun getUserType(): String {
+        return name
+    }
 }
 
 data class CardComponentOrder(
