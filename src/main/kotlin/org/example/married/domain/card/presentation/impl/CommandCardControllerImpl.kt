@@ -24,6 +24,7 @@ class CommandCardControllerImpl(
         return ResponseEntity.ok(result)
     }
 
+    @PutMapping("/update")
     override fun updateCard(
         @RequestBody request: UpdateCardRequest
     ): ResponseEntity<UpdateCardResponse> {
