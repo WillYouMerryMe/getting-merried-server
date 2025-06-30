@@ -2,6 +2,9 @@ package org.example.married.domain.card.presentation.impl
 
 import org.example.married.domain.card.presentation.CommandCardController
 import org.example.married.domain.card.presentation.dto.request.CreateCardRequest
+import org.example.married.domain.card.presentation.dto.request.UpdateCardRequest
+import org.example.married.domain.card.presentation.dto.response.CreateCardResponse
+import org.example.married.domain.card.presentation.dto.response.UpdateCardResponse
 import org.example.married.domain.card.service.CommandCardService
 import org.example.married.domain.user.domain.facade.UserFacade
 import org.springframework.http.ResponseEntity
@@ -16,8 +19,15 @@ class CommandCardControllerImpl(
     @PostMapping
     override fun createCard(
         @RequestBody request: CreateCardRequest,
-    ): ResponseEntity<String> {
+    ): ResponseEntity<CreateCardResponse> {
         val result = commandCardService.createCard(request, UserFacade.getCurrentUser())
+        return ResponseEntity.ok(result)
+    }
+
+    override fun updateCard(
+        @RequestBody request: UpdateCardRequest
+    ): ResponseEntity<UpdateCardResponse> {
+        val result = commandCardService.updateCard(request, UserFacade.getCurrentUser())
         return ResponseEntity.ok(result)
     }
 

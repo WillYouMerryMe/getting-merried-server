@@ -4,6 +4,10 @@ import org.example.married.domain.card.domain.Card
 import org.example.married.domain.card.domain.repository.CardRepository
 import org.example.married.domain.card.exception.CardNotFoundException
 import org.example.married.domain.card.presentation.dto.request.CreateCardRequest
+import org.example.married.domain.card.presentation.dto.request.UpdateCardRequest
+import org.example.married.domain.card.presentation.dto.response.CreateCardResponse
+import org.example.married.domain.card.presentation.dto.response.GetCardResponse
+import org.example.married.domain.card.presentation.dto.response.UpdateCardResponse
 import org.example.married.domain.user.domain.User
 import org.example.married.global.annotation.CustomService
 
@@ -14,7 +18,7 @@ class CommandCardService(
     fun createCard(
         request: CreateCardRequest,
         user: User,
-    ): String {
+    ): CreateCardResponse {
         val card = Card(
             request.title,
             request.invitationSetting.toInvitationSetting(),
@@ -35,7 +39,21 @@ class CommandCardService(
             user.id,
         )
 
-        return cardRepository.save(card).id
+        cardRepository.save(card)
+        return CreateCardResponse.of(card)
+    }
+
+    fun updateCard(
+        request: UpdateCardRequest,
+        user: User,
+    ): UpdateCardResponse {
+        val card = (cardRepository.findByIdAndUserId(request.id, user.id)
+            ?: throw CardNotFoundException())
+
+        val updateCard = card.update(request)
+        cardRepository.save(updateCard)
+
+        return UpdateCardResponse.of(updateCard)
     }
 
     fun deleteCard(

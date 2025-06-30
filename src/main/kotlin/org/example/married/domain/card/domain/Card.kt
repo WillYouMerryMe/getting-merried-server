@@ -1,8 +1,10 @@
 package org.example.married.domain.card.domain
 
 import org.example.married.domain.card.domain.component.*
+import org.example.married.domain.card.presentation.dto.request.UpdateCardRequest
 import org.example.married.global.entity.BaseEntity
 import org.springframework.data.mongodb.core.mapping.Document
+import java.time.LocalDateTime
 
 @Document("cards")
 data class Card(
@@ -23,4 +25,27 @@ data class Card(
     val shareUrlStyle: ShareUrlStyle? = null,           // URL 공유 스타일 설정 - 순서 변경 요소
     val componentOrders: List<CardComponentOrder>,
     val userId: String,
-): BaseEntity()
+): BaseEntity() {
+    fun update(
+        request: UpdateCardRequest,
+    ): Card {
+        return this.copy(
+            request.title,
+            request.invitationSetting.toInvitationSetting(),
+            request.mainPageSetting.toMainPageSetting(),
+            request.invitationMessage?.toInvitationMessage(),
+            request.groomProfile?.toGroomProfile(),
+            request.brideProfile?.toBrideProfile(),
+            request.weddingInfo?.toWeddingInfo(),
+            request.photoGallery?.toPhotoGallery(),
+            request.videoGallery?.toVideoGallery(),
+            request.locationGuide?.toLocationGuide(),
+            request.accountInfo?.toAccountInfo(),
+            request.guestNotice?.toGuestNotice(),
+            request.guestBook?.toGuestBook(),
+            request.guestSnapshots?.toGuestSnapshots(),
+            request.shareUrlStyle?.toShareUrlStyle(),
+            request.componentOrders,
+        )
+    }
+}
