@@ -37,6 +37,7 @@ class CommandAuthService(
         return TokenResponse(
             jwtTokenProvider.createAccessToken(userInfo.email),
             jwtTokenProvider.createRefreshToken(userInfo.email),
+            request.provider,
         )
     }
 
@@ -54,5 +55,9 @@ class CommandAuthService(
             ?: throw InvalidJwtTokenException(request.token)
 
         refreshTokenRepository.delete(refreshToken)
+    }
+
+    fun deleteUser(cUser: User) {
+        userRepository.delete(cUser)
     }
 }

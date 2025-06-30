@@ -35,4 +35,12 @@ interface CommandAuthController {
     fun logout(
         @RequestBody request: LogoutRefreshTokenRequest,
     ): ResponseEntity<Void>
+
+    @Operation(
+        summary = "회원 탈퇴를 진행하는 API 입니다.",
+        description = "회원의 요청을 받아 회원 탈퇴를 진행합니다."
+    )
+    fun deleteUser(
+
+    ): ResponseEntity<Void>
 }

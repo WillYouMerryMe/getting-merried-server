@@ -6,6 +6,7 @@ import org.example.married.domain.auth.presentation.dto.request.LogoutRefreshTok
 import org.example.married.domain.auth.presentation.dto.request.ReissueRefreshTokenRequest
 import org.example.married.domain.auth.presentation.dto.response.TokenResponse
 import org.example.married.domain.auth.service.CommandAuthService
+import org.example.married.domain.user.domain.facade.UserFacade
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -39,6 +40,14 @@ class CommandAuthControllerImpl(
         @RequestBody request: LogoutRefreshTokenRequest,
     ): ResponseEntity<Void> {
         commandAuthService.logout(request)
+        return ResponseEntity.noContent().build()
+    }
+
+    @PostMapping("/logout")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    override fun deleteUser(
+    ): ResponseEntity<Void> {
+        commandAuthService.deleteUser(UserFacade.getCurrentUser())
         return ResponseEntity.noContent().build()
     }
 }
