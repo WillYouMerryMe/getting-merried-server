@@ -3,11 +3,15 @@ package org.example.married.domain.card.domain
 import org.example.married.domain.card.domain.component.*
 import org.example.married.domain.card.presentation.dto.request.UpdateCardRequest
 import org.example.married.global.entity.BaseEntity
+import org.example.married.global.util.generateDocumentId
+import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import java.time.LocalDateTime
 
 @Document("cards")
 data class Card(
+    @Id
+    val id: String = generateDocumentId(),
     val title: String,                                  // 청접장 명
     val invitationSetting: InvitationSetting,           // 청접장 전체 설정
     val mainPageSetting: MainPageSetting,               // 메인 화면 설정
@@ -25,7 +29,10 @@ data class Card(
     val shareUrlStyle: ShareUrlStyle? = null,           // URL 공유 스타일 설정 - 순서 변경 요소
     val componentOrders: List<CardComponentOrder>,
     val userId: String,
-): BaseEntity() {
+    val createdAt: LocalDateTime = LocalDateTime.now(),
+    var updatedAt: LocalDateTime = LocalDateTime.now(),
+    var deletedAt: LocalDateTime? = null,
+) {
     fun update(
         request: UpdateCardRequest,
     ): Card {

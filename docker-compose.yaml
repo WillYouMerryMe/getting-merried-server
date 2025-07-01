@@ -1,0 +1,9 @@
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: married
+    ports:
+      - "27017:27017"
