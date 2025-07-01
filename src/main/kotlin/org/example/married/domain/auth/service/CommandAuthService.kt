@@ -25,10 +25,10 @@ class CommandAuthService(
 
         userRepository.findByEmail(userInfo.email) ?: run {
             val user = User(
-                userInfo.email,
-                userInfo.nickname,
-                userInfo.profileImg,
-                request.provider,
+                email = userInfo.email,
+                nickname = userInfo.nickname,
+                profileImg = userInfo.profileImg,
+                provider = request.provider,
             )
 
             userRepository.save(user)
