@@ -58,7 +58,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
     // s3
-    implementation("org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE")
+    implementation("software.amazon.awssdk:s3:2.25.23")
 
     // test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
