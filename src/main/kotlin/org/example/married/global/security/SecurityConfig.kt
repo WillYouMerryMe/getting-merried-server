@@ -42,7 +42,6 @@ class SecurityConfig(
             .authorizeHttpRequests{ auth -> auth
                 .requestMatchers("/error").permitAll()
                 .requestMatchers("/auth/**").permitAll()
-                .requestMatchers("/files/**").permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers(
                     "/swagger-ui/**",
