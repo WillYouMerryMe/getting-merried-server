@@ -21,7 +21,8 @@ class WebConfig : WebMvcConfigurer {
                 HttpMethod.OPTIONS.name(),
             )
             .allowedOrigins(
-                "http://localhost:3000"
+                "http://localhost:3000",
+                "https://married.blink-deploy.site",
             )
             .allowedHeaders("*")
             .allowCredentials(true)

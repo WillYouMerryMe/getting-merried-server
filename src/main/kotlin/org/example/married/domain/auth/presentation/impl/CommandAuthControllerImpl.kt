@@ -29,9 +29,9 @@ class CommandAuthControllerImpl(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     override fun reissueRefreshToken(
         @RequestBody request: ReissueRefreshTokenRequest,
-    ): ResponseEntity<Void> {
-        commandAuthService.reissueRefreshToken(request)
-        return ResponseEntity.noContent().build()
+    ): ResponseEntity<String> {
+        val result = commandAuthService.reissueRefreshToken(request)
+        return ResponseEntity.ok(result)
     }
 
     @PostMapping("/logout")

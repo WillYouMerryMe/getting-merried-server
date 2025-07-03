@@ -26,7 +26,7 @@ interface CommandAuthController {
     )
     fun reissueRefreshToken(
         @RequestBody request: ReissueRefreshTokenRequest,
-    ): ResponseEntity<Void>
+    ): ResponseEntity<String>
 
     @Operation(
         summary = "로그아웃을 진행하는 API 입니다.",
