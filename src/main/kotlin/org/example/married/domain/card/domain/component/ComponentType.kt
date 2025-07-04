@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonValue
 
 enum class ComponentType {
     INVITATION_MESSAGE,
-    GROOM_PROFILE,
-    BRIDE_PROFILE,
+    GROOM_BRIDE_PROFILE,
     WEDDING_DATE,
     PHOTO_GALLERY,
     VIDEO_GALLERY,
