@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository
 @Repository
 interface AttendeeRepository: MongoRepository<Attendee, String> {
     fun findByCardIdAndPhoneNumber(cardId: String, phoneNumber: String): Attendee?
+
+    fun findAllByCardId(cardId: String): List<Attendee>
 }
 
 fun AttendeeRepository.findByIdOrNull(attendeeId: String): Attendee {
