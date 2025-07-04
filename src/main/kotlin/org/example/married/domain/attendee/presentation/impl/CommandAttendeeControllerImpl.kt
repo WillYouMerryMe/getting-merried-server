@@ -4,9 +4,11 @@ import org.example.married.domain.attendee.presentation.CommandAttendeeControlle
 import org.example.married.domain.attendee.presentation.dto.request.CreateAttendeeRequest
 import org.example.married.domain.attendee.presentation.dto.request.GetAccountInfoRequest
 import org.example.married.domain.attendee.presentation.dto.request.GetAttendeeInfoRequest
+import org.example.married.domain.attendee.presentation.dto.request.UpdateAttendeeRequest
 import org.example.married.domain.attendee.presentation.dto.response.GetAccountInfoResponse
 import org.example.married.domain.attendee.service.CommandAttendeeService
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -24,6 +26,14 @@ class CommandAttendeeControllerImpl(
         request: CreateAttendeeRequest,
     ): ResponseEntity<Void> {
         commandAttendeeService.createAttendee(request)
+        return ResponseEntity.noContent().build()
+    }
+
+    @PatchMapping
+    override fun updateAttendee(
+        request: UpdateAttendeeRequest
+    ): ResponseEntity<Void> {
+        commandAttendeeService.updateAttendee(request)
         return ResponseEntity.noContent().build()
     }
 

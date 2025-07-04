@@ -2,15 +2,16 @@ package org.example.married.domain.attendee.service
 
 import org.example.married.domain.attendee.domain.Attendee
 import org.example.married.domain.attendee.domain.repository.AttendeeRepository
+import org.example.married.domain.attendee.domain.repository.findByIdOrNull
 import org.example.married.domain.attendee.exception.AttendeeAlreadyException
 import org.example.married.domain.attendee.presentation.dto.request.CreateAttendeeRequest
 import org.example.married.domain.attendee.presentation.dto.request.GetAccountInfoRequest
 import org.example.married.domain.attendee.presentation.dto.request.GetAttendeeInfoRequest
+import org.example.married.domain.attendee.presentation.dto.request.UpdateAttendeeRequest
 import org.example.married.domain.attendee.presentation.dto.response.GetAccountInfoResponse
 import org.example.married.domain.card.domain.repository.CardRepository
 import org.example.married.domain.card.domain.repository.findByIdOrNull
 import org.example.married.global.annotation.CustomService
-import org.springframework.http.ResponseEntity
 
 @CustomService
 class CommandAttendeeService(
@@ -32,6 +33,20 @@ class CommandAttendeeService(
             hasSentGift = request.hasSentGift,
             isEating = request.isEating,
             cardId = request.cardId,
+        )
+
+        attendeeRepository.save(attendee)
+    }
+
+    fun updateAttendee(
+        request: UpdateAttendeeRequest,
+    ) {
+        val attendee = attendeeRepository.findByIdOrNull(
+            request.attendeeId,
+        ).update(
+            request.isAttending,
+            request.hasSentGift,
+            request.isEating,
         )
 
         attendeeRepository.save(attendee)

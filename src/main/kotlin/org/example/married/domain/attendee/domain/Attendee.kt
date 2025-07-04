@@ -24,6 +24,19 @@ data class Attendee(
     var updatedAt: LocalDateTime = LocalDateTime.now(),
     var deletedAt: LocalDateTime? = null,
 ) {
+    fun update(
+        isAttending: Boolean,
+        hasSentGift: Boolean,
+        isEating: Boolean,
+    ):Attendee {
+        return this.copy(
+            isAttending = isAttending,
+            hasSentGift = hasSentGift,
+            isEating = isEating,
+            updatedAt = LocalDateTime.now(),
+        )
+    }
+
     fun updateAccountInfo():Attendee {
         return this.copy(
             hasSentGift = true,
