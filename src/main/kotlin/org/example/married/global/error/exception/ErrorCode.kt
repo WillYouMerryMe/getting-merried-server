@@ -12,6 +12,9 @@ enum class ErrorCode(
     // card
     CARD_NOT_FOUND(HttpStatus.NOT_FOUND, "카드를 찾지 못 하였습니다."),
 
+    // attendee
+    ATTENDEE_NOT_FOUND(HttpStatus.NOT_FOUND, "참석자를 찾지 못 하였습니다."),
+
     // jwt
     EXPIRED_JWT(HttpStatus.UNAUTHORIZED, "만료된 토큰입니다."),
     INVALID_JWT(HttpStatus.UNAUTHORIZED, "유효하지 않은 토큰입니다."),
