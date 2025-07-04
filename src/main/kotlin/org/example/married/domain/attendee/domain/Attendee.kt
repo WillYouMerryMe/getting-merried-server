@@ -15,6 +15,7 @@ data class Attendee(
     val phoneNumber: String,
     val isAttending: Boolean = false,
     val hasSentGift: Boolean = false,
+    val isEating: Boolean = false,
     val side: Side? = null,
     val numberOfAttendees: Int = 1,
     val mealPreference: MealPreference? = null,
@@ -37,6 +38,7 @@ data class Attendee(
     ):Attendee {
         return this.copy(
             isAttending = true,
+            isEating = mealPreference.isEating,
             side = side,
             numberOfAttendees = numberOfAttendees,
             mealPreference = mealPreference,

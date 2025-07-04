@@ -14,6 +14,7 @@ enum class ErrorCode(
 
     // attendee
     ATTENDEE_NOT_FOUND(HttpStatus.NOT_FOUND, "참석자를 찾지 못 하였습니다."),
+    ATTENDEE_ALREADY(HttpStatus.CONFLICT, "이미 참석자가 추가되었습니다."),
 
     // jwt
     EXPIRED_JWT(HttpStatus.UNAUTHORIZED, "만료된 토큰입니다."),

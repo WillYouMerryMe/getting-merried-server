@@ -2,6 +2,7 @@ package org.example.married.domain.attendee.presentation
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
+import org.example.married.domain.attendee.presentation.dto.request.CreateAttendeeRequest
 import org.example.married.domain.attendee.presentation.dto.request.GetAccountInfoRequest
 import org.example.married.domain.attendee.presentation.dto.request.GetAttendeeInfoRequest
 import org.example.married.domain.attendee.presentation.dto.response.GetAccountInfoResponse
@@ -9,6 +10,14 @@ import org.springframework.http.ResponseEntity
 
 @Tag(name = "Attendee API")
 interface CommandAttendeeController {
+
+    @Operation(
+        summary = "청첩장의 참석자 추가 API 입니다.",
+        description = "참석자의 정보를 받아 저장합니다.",
+    )
+    fun createAttendee(
+        request: CreateAttendeeRequest,
+    ): ResponseEntity<Void>
 
     @Operation(
         summary = "청첩장의 계좌번호 조회 API 입니다.",

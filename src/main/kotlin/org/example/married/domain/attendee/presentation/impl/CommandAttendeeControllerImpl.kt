@@ -1,6 +1,7 @@
 package org.example.married.domain.attendee.presentation.impl
 
 import org.example.married.domain.attendee.presentation.CommandAttendeeController
+import org.example.married.domain.attendee.presentation.dto.request.CreateAttendeeRequest
 import org.example.married.domain.attendee.presentation.dto.request.GetAccountInfoRequest
 import org.example.married.domain.attendee.presentation.dto.request.GetAttendeeInfoRequest
 import org.example.married.domain.attendee.presentation.dto.response.GetAccountInfoResponse
@@ -18,6 +19,14 @@ class CommandAttendeeControllerImpl(
     private val commandAttendeeService: CommandAttendeeService,
 ): CommandAttendeeController {
 
+    @PostMapping
+    override fun createAttendee(
+        request: CreateAttendeeRequest,
+    ): ResponseEntity<Void> {
+        commandAttendeeService.createAttendee(request)
+        return ResponseEntity.noContent().build()
+    }
+
     @PostMapping("/account")
     override fun viewAccount(
         @RequestBody request: GetAccountInfoRequest,
@@ -26,7 +35,7 @@ class CommandAttendeeControllerImpl(
         return ResponseEntity.ok(result)
     }
 
-    @PostMapping
+    @PostMapping("/intention")
     override fun saveAttendeeInfo(
         @RequestBody request: GetAttendeeInfoRequest,
     ): ResponseEntity<Void> {
