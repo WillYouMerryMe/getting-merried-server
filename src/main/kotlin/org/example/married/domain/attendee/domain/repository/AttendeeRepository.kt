@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface AttendeeRepository: MongoRepository<Attendee, String> {
-    fun existsByCardIdAndPhoneNumber(cardId: String, phoneNumber: String): Boolean
+    fun findByCardIdAndPhoneNumber(cardId: String, phoneNumber: String): Attendee?
 }
 
 fun CardRepository.findByIdOrNull(attendeeId: String): Card {

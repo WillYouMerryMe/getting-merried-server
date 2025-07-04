@@ -2,6 +2,7 @@ package org.example.married.domain.attendee.presentation.impl
 
 import org.example.married.domain.attendee.presentation.CommandAttendeeController
 import org.example.married.domain.attendee.presentation.dto.request.GetAccountInfoRequest
+import org.example.married.domain.attendee.presentation.dto.request.GetAttendeeInfoRequest
 import org.example.married.domain.attendee.presentation.dto.response.GetAccountInfoResponse
 import org.example.married.domain.attendee.service.CommandAttendeeService
 import org.springframework.http.ResponseEntity
@@ -24,5 +25,14 @@ class CommandAttendeeControllerImpl(
         val result = commandAttendeeService.getAccountInfo(request)
         return ResponseEntity.ok(result)
     }
+
+    @PostMapping
+    override fun saveAttendeeInfo(
+        @RequestBody request: GetAttendeeInfoRequest,
+    ): ResponseEntity<Void> {
+        commandAttendeeService.saveAttendeeInfo(request)
+        return ResponseEntity.noContent().build()
+    }
+
 
 }

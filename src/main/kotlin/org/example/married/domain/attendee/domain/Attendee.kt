@@ -15,12 +15,32 @@ data class Attendee(
     val phoneNumber: String,
     val isAttending: Boolean = false,
     val hasSentGift: Boolean = false,
-    val isEating: Boolean = false,
     val side: Side? = null,
-    val numberOfAttendees: Int? = null,
+    val numberOfAttendees: Int = 1,
     val mealPreference: MealPreference? = null,
     val cardId: String,
     val createdAt: LocalDateTime = LocalDateTime.now(),
     var updatedAt: LocalDateTime = LocalDateTime.now(),
     var deletedAt: LocalDateTime? = null,
-)
+) {
+    fun updateAccountInfo():Attendee {
+        return this.copy(
+            hasSentGift = true,
+            updatedAt = LocalDateTime.now(),
+        )
+    }
+
+    fun updateAttendeeInfo(
+        side: Side,
+        numberOfAttendees: Int,
+        mealPreference: MealPreference,
+    ):Attendee {
+        return this.copy(
+            isAttending = true,
+            side = side,
+            numberOfAttendees = numberOfAttendees,
+            mealPreference = mealPreference,
+            updatedAt = LocalDateTime.now(),
+        )
+    }
+}

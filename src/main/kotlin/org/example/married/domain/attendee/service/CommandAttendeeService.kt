@@ -3,6 +3,7 @@ package org.example.married.domain.attendee.service
 import org.example.married.domain.attendee.domain.Attendee
 import org.example.married.domain.attendee.domain.repository.AttendeeRepository
 import org.example.married.domain.attendee.presentation.dto.request.GetAccountInfoRequest
+import org.example.married.domain.attendee.presentation.dto.request.GetAttendeeInfoRequest
 import org.example.married.domain.attendee.presentation.dto.response.GetAccountInfoResponse
 import org.example.married.domain.card.domain.repository.CardRepository
 import org.example.married.domain.card.domain.repository.findByIdOrNull
@@ -17,20 +18,40 @@ class CommandAttendeeService(
     fun getAccountInfo(
         request: GetAccountInfoRequest,
     ): GetAccountInfoResponse {
-        attendeeRepository.existsByCardIdAndPhoneNumber(
+        val attendee = attendeeRepository.findByCardIdAndPhoneNumber(
             request.cardId, request.phoneNumber
-        ).takeIf { !it }?.apply {
-            val attendee = Attendee(
-                name = request.name,
-                phoneNumber = request.phoneNumber,
-                hasSentGift = true,
-                cardId = request.cardId,
-            )
+        )?.updateAccountInfo() ?: Attendee(
+            name = request.name,
+            phoneNumber = request.phoneNumber,
+            hasSentGift = true,
+            cardId = request.cardId,
+        )
 
-            attendeeRepository.save(attendee)
-        }
+        attendeeRepository.save(attendee)
 
         val card = cardRepository.findByIdOrNull(request.cardId)
         return GetAccountInfoResponse.from(card.accountInfo)
+    }
+
+    fun saveAttendeeInfo(
+        request: GetAttendeeInfoRequest,
+    ) {
+        val attendee = attendeeRepository.findByCardIdAndPhoneNumber(
+            request.cardId,
+            request.phoneNumber,
+        )?.updateAttendeeInfo(
+            side = request.side,
+            numberOfAttendees = request.numberOfAttendees,
+            mealPreference = request.mealPreference,
+        ) ?: Attendee(
+            name = request.name,
+            phoneNumber = request.phoneNumber,
+            side = request.side,
+            numberOfAttendees = request.numberOfAttendees,
+            mealPreference = request.mealPreference,
+            cardId = request.cardId,
+        )
+
+        attendeeRepository.save(attendee)
     }
 }

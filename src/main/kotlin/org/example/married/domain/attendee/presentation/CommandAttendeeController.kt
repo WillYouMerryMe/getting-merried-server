@@ -3,6 +3,7 @@ package org.example.married.domain.attendee.presentation
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.example.married.domain.attendee.presentation.dto.request.GetAccountInfoRequest
+import org.example.married.domain.attendee.presentation.dto.request.GetAttendeeInfoRequest
 import org.example.married.domain.attendee.presentation.dto.response.GetAccountInfoResponse
 import org.springframework.http.ResponseEntity
 
@@ -16,4 +17,12 @@ interface CommandAttendeeController {
     fun viewAccount(
         request: GetAccountInfoRequest,
     ): ResponseEntity<GetAccountInfoResponse>
+
+    @Operation(
+        summary = "청첩장의 결혼식 참석 의사 API 입니다.",
+        description = "각종 결혼식 참석 의사 정보를 저장합니다.",
+    )
+    fun saveAttendeeInfo(
+        request: GetAttendeeInfoRequest,
+    ): ResponseEntity<Void>
 }
