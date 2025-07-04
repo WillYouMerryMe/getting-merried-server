@@ -5,6 +5,7 @@ import org.example.married.domain.card.domain.component.*
 
 data class UpdateCardResponse(
     val title: String,
+    val templateId: String,
     val invitationSetting: InvitationSetting,
     val mainPageSetting: MainPageSetting,
     val invitationMessage: InvitationMessage? = null,
@@ -27,6 +28,7 @@ data class UpdateCardResponse(
         ): UpdateCardResponse {
             return UpdateCardResponse(
                 title = card.title,
+                templateId = card.templateId,
                 invitationSetting = card.invitationSetting,
                 mainPageSetting = card.mainPageSetting,
                 invitationMessage = card.invitationMessage,

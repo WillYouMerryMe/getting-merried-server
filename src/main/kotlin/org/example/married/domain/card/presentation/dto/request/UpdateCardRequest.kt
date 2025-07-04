@@ -5,6 +5,7 @@ import org.example.married.domain.card.domain.component.*
 data class UpdateCardRequest(
     val id: String,
     val title: String,
+    val templateId: String,
     val invitationSetting: InvitationSettingDto,
     val mainPageSetting: MainPageSettingDto,
     val invitationMessage: InvitationMessageDto? = null,

@@ -21,6 +21,7 @@ class CommandCardService(
     ): CreateCardResponse {
         val card = Card(
             title = request.title,
+            templateId = request.templateId,
             invitationSetting = request.invitationSetting.toInvitationSetting(),
             mainPageSetting = request.mainPageSetting.toMainPageSetting(),
             invitationMessage = request.invitationMessage?.toInvitationMessage(),

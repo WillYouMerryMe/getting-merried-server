@@ -13,6 +13,7 @@ data class Card(
     @Id
     val id: String = generateDocumentId(),
     val title: String,                                  // 청접장 명
+    val templateId: String,                             // 템플릿 id
     val invitationSetting: InvitationSetting,           // 청접장 전체 설정
     val mainPageSetting: MainPageSetting,               // 메인 화면 설정
     val invitationMessage: InvitationMessage? = null,   // 초대 글귀 - 순서 변경 요소
@@ -38,6 +39,7 @@ data class Card(
     ): Card {
         return this.copy(
             title = request.title,
+            templateId = request.templateId,
             invitationSetting = request.invitationSetting.toInvitationSetting(),
             mainPageSetting = request.mainPageSetting.toMainPageSetting(),
             invitationMessage = request.invitationMessage?.toInvitationMessage(),
