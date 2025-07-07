@@ -2,7 +2,6 @@ package org.example.married.domain.card.domain
 
 import org.example.married.domain.card.domain.component.*
 import org.example.married.domain.card.presentation.dto.request.UpdateCardRequest
-import org.example.married.global.entity.BaseEntity
 import org.example.married.global.util.generateDocumentId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
@@ -25,7 +24,7 @@ data class Card(
     val locationGuide: LocationGuide? = null,           // 오시는 길 - 순서 변경 요소
     val accountInfo: AccountInfo? = null,               // 계좌번호 - 순서 변경 요소
     val guestNotice: GuestNotice? = null,               // 안내사항 - 순서 변경 요소
-    val guestBook: GuestBook? = null,                   // 방명록 - 순서 변경 요소
+    val guestBookInfo: GuestBookInfo? = null,           // 방명록 - 순서 변경 요소
     val guestSnapshots: GuestSnapshots? = null,         // 게스트 스냅 - 순서 변경 요소
     val shareUrlStyle: ShareUrlStyle? = null,           // URL 공유 스타일 설정 - 순서 변경 요소
     val componentOrders: List<CardComponentOrder>,
@@ -51,7 +50,7 @@ data class Card(
             locationGuide = request.locationGuide?.toLocationGuide(),
             accountInfo = request.accountInfo?.toAccountInfo(),
             guestNotice = request.guestNotice?.toGuestNotice(),
-            guestBook = request.guestBook?.toGuestBook(),
+            guestBookInfo = request.guestBook?.toGuestBook(),
             guestSnapshots = request.guestSnapshots?.toGuestSnapshots(),
             shareUrlStyle = request.shareUrlStyle?.toShareUrlStyle(),
             componentOrders = request.componentOrders,

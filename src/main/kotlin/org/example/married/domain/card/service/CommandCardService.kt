@@ -6,7 +6,6 @@ import org.example.married.domain.card.exception.CardNotFoundException
 import org.example.married.domain.card.presentation.dto.request.CreateCardRequest
 import org.example.married.domain.card.presentation.dto.request.UpdateCardRequest
 import org.example.married.domain.card.presentation.dto.response.CreateCardResponse
-import org.example.married.domain.card.presentation.dto.response.GetCardResponse
 import org.example.married.domain.card.presentation.dto.response.UpdateCardResponse
 import org.example.married.domain.user.domain.User
 import org.example.married.global.annotation.CustomService
@@ -33,7 +32,7 @@ class CommandCardService(
             locationGuide = request.locationGuide?.toLocationGuide(),
             accountInfo = request.accountInfo?.toAccountInfo(),
             guestNotice = request.guestNotice?.toGuestNotice(),
-            guestBook = request.guestBook?.toGuestBook(),
+            guestBookInfo = request.guestBook?.toGuestBook(),
             guestSnapshots = request.guestSnapshots?.toGuestSnapshots(),
             shareUrlStyle = request.shareUrlStyle?.toShareUrlStyle(),
             componentOrders = request.componentOrders,

@@ -9,6 +9,9 @@ enum class ErrorCode(
     // user
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "유저를 찾지 못 하였습니다."),
 
+    // guestBook
+    GUEST_BOOK_NOT_FOUND(HttpStatus.NOT_FOUND, "방명록을 찾지 못 하였습니다."),
+
     // card
     CARD_NOT_FOUND(HttpStatus.NOT_FOUND, "카드를 찾지 못 하였습니다."),
 
