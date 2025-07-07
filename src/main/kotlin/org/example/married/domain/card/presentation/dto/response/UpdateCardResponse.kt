@@ -4,6 +4,7 @@ import org.example.married.domain.card.domain.Card
 import org.example.married.domain.card.domain.component.*
 
 data class UpdateCardResponse(
+    val id: String,
     val title: String,
     val templateId: String,
     val invitationSetting: InvitationSetting,
@@ -27,6 +28,7 @@ data class UpdateCardResponse(
             card: Card,
         ): UpdateCardResponse {
             return UpdateCardResponse(
+                id = card.id,
                 title = card.title,
                 templateId = card.templateId,
                 invitationSetting = card.invitationSetting,
