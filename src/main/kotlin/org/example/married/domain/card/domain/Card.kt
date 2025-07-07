@@ -25,7 +25,7 @@ data class Card(
     val accountInfo: AccountInfo? = null,               // 계좌번호 - 순서 변경 요소
     val guestNotice: GuestNotice? = null,               // 안내사항 - 순서 변경 요소
     val guestBookInfo: GuestBookInfo? = null,           // 방명록 - 순서 변경 요소
-    val guestSnapshots: GuestSnapshots? = null,         // 게스트 스냅 - 순서 변경 요소
+    val guestSnapshotInfo: GuestSnapshotInfo? = null,         // 게스트 스냅 - 순서 변경 요소
     val shareUrlStyle: ShareUrlStyle? = null,           // URL 공유 스타일 설정 - 순서 변경 요소
     val componentOrders: List<CardComponentOrder>,
     val userId: String,
@@ -51,7 +51,7 @@ data class Card(
             accountInfo = request.accountInfo?.toAccountInfo(),
             guestNotice = request.guestNotice?.toGuestNotice(),
             guestBookInfo = request.guestBook?.toGuestBook(),
-            guestSnapshots = request.guestSnapshots?.toGuestSnapshots(),
+            guestSnapshotInfo = request.guestSnapshots?.toGuestSnapshots(),
             shareUrlStyle = request.shareUrlStyle?.toShareUrlStyle(),
             componentOrders = request.componentOrders,
             updatedAt = LocalDateTime.now(),

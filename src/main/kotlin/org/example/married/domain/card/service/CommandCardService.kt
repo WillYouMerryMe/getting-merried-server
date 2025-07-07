@@ -33,7 +33,7 @@ class CommandCardService(
             accountInfo = request.accountInfo?.toAccountInfo(),
             guestNotice = request.guestNotice?.toGuestNotice(),
             guestBookInfo = request.guestBook?.toGuestBook(),
-            guestSnapshots = request.guestSnapshots?.toGuestSnapshots(),
+            guestSnapshotInfo = request.guestSnapshots?.toGuestSnapshots(),
             shareUrlStyle = request.shareUrlStyle?.toShareUrlStyle(),
             componentOrders = request.componentOrders,
             userId = user.id,

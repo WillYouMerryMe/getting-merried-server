@@ -17,8 +17,8 @@ data class GetCardResponse(
     val locationGuide: LocationGuide? = null,
     val accountInfo: AccountInfo? = null,
     val guestNotice: GuestNotice? = null,
-    val guestBookInfo: GuestBookInfo? = null,
-    val guestSnapshots: GuestSnapshots? = null,
+    val guestBook: GuestBookInfo? = null,
+    val guestSnapshots: GuestSnapshotInfo? = null,
     val shareUrlStyle: ShareUrlStyle? = null,
     val componentOrders: List<CardComponentOrder>,
 ) {
@@ -40,8 +40,8 @@ data class GetCardResponse(
                 locationGuide = card.locationGuide,
                 accountInfo = card.accountInfo,
                 guestNotice = card.guestNotice,
-                guestBookInfo = card.guestBookInfo,
-                guestSnapshots = card.guestSnapshots,
+                guestBook = card.guestBookInfo,
+                guestSnapshots = card.guestSnapshotInfo,
                 shareUrlStyle = card.shareUrlStyle,
                 componentOrders = card.componentOrders,
             )
