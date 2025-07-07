@@ -21,7 +21,7 @@ class QueryCardControllerImpl(
     override fun getById(
         @PathVariable id: String,
     ): ResponseEntity<GetCardResponse> {
-        val result = queryCardService.getCardById(id, UserFacade.getCurrentUser())
+        val result = queryCardService.getCardById(id)
         return ResponseEntity.ok(result)
     }
 
