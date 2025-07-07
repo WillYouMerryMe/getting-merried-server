@@ -50,6 +50,7 @@ class SecurityConfig(
                     "/guestbooks/create",
                     "/attendees/account",
                     "/attendees/intention",
+                    "guestSnapshots/create",
                 ).permitAll()
 
                 .requestMatchers(
