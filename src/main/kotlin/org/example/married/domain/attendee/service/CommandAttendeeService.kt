@@ -29,9 +29,11 @@ class CommandAttendeeService(
         val attendee = Attendee(
             name = request.name,
             phoneNumber = request.phoneNumber,
+            side = request.side,
+            numberOfAttendees = request.numberOfAttendees,
+            mealPreference = request.mealPreference,
             isAttending = request.isAttending,
             hasSentGift = request.hasSentGift,
-            isEating = request.isEating,
             cardId = request.cardId,
         )
 
@@ -44,9 +46,10 @@ class CommandAttendeeService(
         val attendee = attendeeRepository.findByIdOrNull(
             request.attendeeId,
         ).update(
-            request.isAttending,
-            request.hasSentGift,
-            request.isEating,
+            numberOfAttendees = request.numberOfAttendees,
+            isAttending = request.isAttending,
+            hasSentGift = request.hasSentGift,
+            mealPreference = request.mealPreference,
         )
 
         attendeeRepository.save(attendee)
@@ -90,5 +93,13 @@ class CommandAttendeeService(
         )
 
         attendeeRepository.save(attendee)
+    }
+
+    fun deleteAttendee(
+        id: String,
+    ) {
+        val attendee = attendeeRepository.findByIdOrNull(id)
+
+        attendeeRepository.delete(attendee)
     }
 }

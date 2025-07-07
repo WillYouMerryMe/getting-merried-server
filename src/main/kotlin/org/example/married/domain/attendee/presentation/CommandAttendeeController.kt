@@ -38,9 +38,17 @@ interface CommandAttendeeController {
 
     @Operation(
         summary = "청첩장의 결혼식 참석 의사 API 입니다.",
-        description = "각종 결혼식 참석 의사 정보를 저장합니다.",
+        description = "결혼식 참석 의사 정보를 저장합니다.",
     )
     fun saveAttendeeInfo(
         request: GetAttendeeInfoRequest,
+    ): ResponseEntity<Void>
+
+    @Operation(
+        summary = "청첩장의 결혼식 참석 의사 삭제 API 입니다.",
+        description = "결혼식 참석 의사 정보를 삭제합니다.",
+    )
+    fun deleteAttendeeInfo(
+        id: String,
     ): ResponseEntity<Void>
 }

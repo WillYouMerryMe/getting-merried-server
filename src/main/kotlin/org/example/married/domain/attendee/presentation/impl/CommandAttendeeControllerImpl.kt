@@ -8,7 +8,9 @@ import org.example.married.domain.attendee.presentation.dto.request.UpdateAttend
 import org.example.married.domain.attendee.presentation.dto.response.GetAccountInfoResponse
 import org.example.married.domain.attendee.service.CommandAttendeeService
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PatchMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -53,5 +55,11 @@ class CommandAttendeeControllerImpl(
         return ResponseEntity.noContent().build()
     }
 
-
+    @DeleteMapping("/{id}")
+    override fun deleteAttendeeInfo(
+        @PathVariable id: String
+    ): ResponseEntity<Void> {
+        commandAttendeeService.deleteAttendee(id)
+        return ResponseEntity.noContent().build()
+    }
 }

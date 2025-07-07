@@ -1,6 +1,7 @@
 package org.example.married.domain.attendee.presentation.dto.response
 
 import org.example.married.domain.attendee.domain.Attendee
+import org.example.married.domain.attendee.domain.type.MealPreference
 import org.example.married.domain.attendee.domain.type.Side
 
 data class GetAttendeeResponse(
@@ -9,7 +10,7 @@ data class GetAttendeeResponse(
     val side: Side?,
     val isAttending: Boolean,
     val hasSentGift: Boolean,
-    val isEating: Boolean,
+    val mealPreference: MealPreference,
     val numberOfAttendees: Int,
 ) {
     companion object {
@@ -22,7 +23,7 @@ data class GetAttendeeResponse(
                 side = attendee.side,
                 isAttending = attendee.isAttending,
                 hasSentGift = attendee.hasSentGift,
-                isEating = attendee.isEating,
+                mealPreference = attendee.mealPreference,
                 numberOfAttendees = attendee.numberOfAttendees,
             )
         }
