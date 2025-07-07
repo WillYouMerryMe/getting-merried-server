@@ -15,7 +15,7 @@ class CommandGuestBookControllerImpl(
     private val commandGuestBookService: CommandGuestBookService,
 ): CommandGuestBookController {
 
-    @PostMapping
+    @PostMapping("/create")
     override fun createGuestBook(
         @RequestBody request: CreateGuestBookRequest,
     ): ResponseEntity<Void> {

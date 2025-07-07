@@ -29,7 +29,7 @@ interface CommandAttendeeController {
     ): ResponseEntity<Void>
 
     @Operation(
-        summary = "청첩장의 계좌번호 조회 API 입니다.",
+        summary = "청첩장의 계좌번호 조회 API 입니다. | accessToken X",
         description = "이름과 정보를 제공 시 청첩장의 계좌 번호를 반환합니다.",
     )
     fun viewAccount(
@@ -37,7 +37,7 @@ interface CommandAttendeeController {
     ): ResponseEntity<GetAccountInfoResponse>
 
     @Operation(
-        summary = "청첩장의 결혼식 참석 의사 API 입니다.",
+        summary = "청첩장의 결혼식 참석 의사 API 입니다. | accessToken X",
         description = "결혼식 참석 의사 정보를 저장합니다.",
     )
     fun saveAttendeeInfo(

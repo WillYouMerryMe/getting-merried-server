@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity
 interface CommandGuestBookController {
 
     @Operation(
-        summary = "방명록 등록 API 입니다.",
+        summary = "방명록 등록 API 입니다. | accessToken X",
         description = "이름과 내용을 보낼시 방명록을 등록합니다.",
     )
     fun createGuestBook(

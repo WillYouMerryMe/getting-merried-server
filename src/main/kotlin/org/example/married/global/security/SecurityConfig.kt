@@ -41,12 +41,23 @@ class SecurityConfig(
         http
             .authorizeHttpRequests{ auth -> auth
                 .requestMatchers("/error").permitAll()
+
                 .requestMatchers("/auth/**").permitAll()
+
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+
+                .requestMatchers(HttpMethod.POST,
+                    "/guestbooks/create",
+                    "/attendees/account",
+                    "/attendees/intention",
+                ).permitAll()
+
                 .requestMatchers(
                     "/swagger-ui/**",
                     "/v3/api-docs/**",
-                    "/v3/api-docs/swagger-config").permitAll()
+                    "/v3/api-docs/swagger-config",
+                ).permitAll()
+
                 .anyRequest().authenticated()
             }
 
