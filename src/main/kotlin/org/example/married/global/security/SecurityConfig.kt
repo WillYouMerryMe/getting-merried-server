@@ -50,7 +50,11 @@ class SecurityConfig(
                     "/guestbooks/create",
                     "/attendees/account",
                     "/attendees/intention",
-                    "guestSnapshots/create",
+                    "/guestSnapshots/create",
+                ).permitAll()
+
+                .requestMatchers(HttpMethod.GET,
+                    "/cards/{id}",
                 ).permitAll()
 
                 .requestMatchers(
