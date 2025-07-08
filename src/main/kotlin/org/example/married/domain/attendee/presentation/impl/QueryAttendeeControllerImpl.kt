@@ -5,11 +5,7 @@ import org.example.married.domain.attendee.presentation.dto.request.GetAttendees
 import org.example.married.domain.attendee.presentation.dto.response.GetAttendeeResponse
 import org.example.married.domain.attendee.service.QueryAttendeeService
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RequestMapping("/attendees")
 @RestController
@@ -17,11 +13,12 @@ class QueryAttendeeControllerImpl(
     private val queryAttendeeService: QueryAttendeeService,
 ): QueryAttendeeController {
 
-    @GetMapping
+    @GetMapping("/{id}")
     override fun getAttendeeList(
-        @RequestBody request: GetAttendeesRequest,
+        @PathVariable id: String,
+        @ModelAttribute request: GetAttendeesRequest,
     ): ResponseEntity<List<GetAttendeeResponse>> {
-        val result = queryAttendeeService.getAttendeeList(request)
+        val result = queryAttendeeService.getAttendeeList(id, request)
         return ResponseEntity.ok(result)
     }
 }

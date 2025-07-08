@@ -14,6 +14,7 @@ interface QueryAttendeeController {
         description = "청첩장의 참석자 리스트를 반환합니다. 필터에 null을 추가할 시 모든 조건은 반환합니다.",
     )
     fun getAttendeeList(
+        id: String,
         request: GetAttendeesRequest,
     ): ResponseEntity<List<GetAttendeeResponse>>
 }

@@ -12,9 +12,10 @@ class QueryAttendeeService(
 ) {
 
     fun getAttendeeList(
+        id: String,
         request: GetAttendeesRequest,
     ): List<GetAttendeeResponse> {
-        val attendees = attendeeRepository.findAllByCardId(request.cardId)
+        val attendees = attendeeRepository.findAllByCardId(id)
 
         val filtered = attendees
             .let { list ->
