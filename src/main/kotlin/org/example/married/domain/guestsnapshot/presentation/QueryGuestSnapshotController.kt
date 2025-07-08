@@ -6,7 +6,7 @@ import org.example.married.domain.guestbook.presentation.dto.response.GetGuestBo
 import org.example.married.domain.guestsnapshot.presentation.dto.request.GetGuestSnapshotRequest
 import org.springframework.http.ResponseEntity
 
-@Tag(name = "GuestBook API")
+@Tag(name = "GuestSnapshot API")
 interface QueryGuestSnapshotController {
 
     @Operation(
