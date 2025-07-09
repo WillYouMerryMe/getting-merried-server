@@ -27,9 +27,9 @@ class QueryGuestBookControllerImpl(
         return ResponseEntity.ok(request)
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{card-id}")
     override fun getGuestBookList(
-        @PathVariable id: String
+        @PathVariable("card-id") id: String
     ): ResponseEntity<List<GetGuestBookListResponse>> {
         val request = queryGuestBookService.getGuestBookList(id)
         return ResponseEntity.ok(request)
