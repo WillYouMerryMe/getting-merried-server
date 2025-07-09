@@ -6,6 +6,7 @@ import java.time.LocalDateTime
 data class GetCardsResponse(
     val id: String,
     val title: String,
+    val templateId: String,
     val picture: String,
     val updateAt: LocalDateTime,
 ) {
@@ -16,6 +17,7 @@ data class GetCardsResponse(
             return GetCardsResponse(
                 id = card.id,
                 title = card.title,
+                templateId = card.templateId,
                 picture = card.mainPageSetting.picture,
                 updateAt = card.updatedAt,
             )
