@@ -5,4 +5,5 @@ import org.example.married.domain.user.domain.type.Provider
 data class CodeRequest(
     val code: String,
     val provider: Provider,
+    val redirectUri: String,
 )

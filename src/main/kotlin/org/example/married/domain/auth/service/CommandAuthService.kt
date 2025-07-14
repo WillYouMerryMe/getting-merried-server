@@ -21,7 +21,7 @@ class CommandAuthService(
     private val jwtTokenProvider: JwtTokenProvider,
 ) {
     fun login(request: CodeRequest): TokenResponse {
-        val userInfo = authFacade.getUserInfo(request.code, request.provider)
+        val userInfo = authFacade.getUserInfo(request.code, request.provider, request.redirectUri)
 
         userRepository.findByEmail(userInfo.email) ?: run {
             val user = User(

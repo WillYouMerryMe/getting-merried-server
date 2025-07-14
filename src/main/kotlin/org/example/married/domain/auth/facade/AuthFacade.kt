@@ -17,14 +17,14 @@ class AuthFacade(
     private val naverAuthClient: NaverAuthClient,
     private val naverUserClient: NaverUserClient,
 ) {
-    fun getUserInfo(code: String, provider: Provider): AuthProfile {
+    fun getUserInfo(code: String, provider: Provider, redirectUri: String): AuthProfile {
         when (provider) {
             Provider.NAVER -> {
                 val accessToken = naverAuthClient.getAccessToken(
                     authProperties.naver.clientId,
                     authProperties.naver.secretId,
                     code,
-                    authProperties.naver.redirectUrl,
+                    redirectUri,
                     authProperties.naver.state,
                 ).access_token
 
@@ -36,7 +36,7 @@ class AuthFacade(
             Provider.KAKAO -> {
                 val accessToken = kakaoAuthClient.getAccessToken(
                     authProperties.kakao.clientId,
-                    authProperties.kakao.redirectUrl,
+                    redirectUri,
                     code,
                 ).access_token
 
