@@ -23,6 +23,7 @@ class WebConfig : WebMvcConfigurer {
                 "http://localhost:3000",
                 "https://married.blink-deploy.site",
                 "https://gettingmarried.vercel.app",
+                "https://getting-married-web.vercel.app",
             )
             .allowedHeaders("*")
             .allowCredentials(true)
